@@ -25,30 +25,6 @@ def grid_generator(x,y):
             gridy += 1
     return gridx, gridy
 
-"""def move_player(direction,grid_x,grid_y):
-    if direction.lower() == 'n':
-        grid_y += 1
-        grid_generator(grid_x,grid_y)
-    elif direction.lower() == 's':
-        grid_y -= 1
-        grid_generator(grid_x, grid_y)
-    elif direction.lower() == 'w':
-        grid_x -= 1
-        grid_generator(grid_x,grid_y)
-    elif direction.lower() == 'e':
-        grid_x += 1
-        grid_generator(grid_x+1,grid_y)"""
-
-"""def move_player(direction,x,y):
-    if direction.lower() == 'n':
-        return x, y+1
-    elif direction.lower() == 's':
-        return x, y-1
-    elif direction.lower() == 'w':
-        return x-1, y
-    elif direction.lower() == 'e':
-        return x+1,y"""
-
 def move_player(direction,x,y,n_valid,s_valid,e_valid,w_valid):
     if direction.lower() == 'n' and n_valid == True:
         return x, y+1
@@ -103,4 +79,3 @@ while loop == True:
         direction = input("Direction: ")
         grid_x,grid_y = move_player(direction,grid_x,grid_y,n_valid,s_valid,e_valid,w_valid)
         grid_generator(grid_x,grid_y)
-        
