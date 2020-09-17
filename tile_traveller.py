@@ -85,7 +85,7 @@ def check_location(x,y):
         print('You can travel: (E)ast or (W)est.')
         n_valid,s_valid,e_valid,w_valid = False, False, True, True
     elif x == 3 and y == 1:
-        print("Victory")
+        print("Victory!")
         n_valid,s_valid,e_valid,w_valid = False,False,False,False
     else:
         print('Not a valid direction!')
@@ -103,8 +103,4 @@ while loop == True:
         direction = input("Direction: ")
         grid_x,grid_y = move_player(direction,grid_x,grid_y,n_valid,s_valid,e_valid,w_valid)
         grid_generator(grid_x,grid_y)
-
-
-
-
-
+        
