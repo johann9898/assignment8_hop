@@ -64,37 +64,44 @@ def move_player(direction,x,y,n_valid,s_valid,e_valid,w_valid):
     
     
 
-def check_location(x,y,n_valid,s_valid,e_valid,w_valid):
+def check_location(x,y):
     if (x == 1 or x == 2) and y == 1:
         print('You can travel: (N)orth.') 
-        return n_valid = True
+        n_valid = True
+        s_valid,e_valid,w_valid = False, False, False
     elif x == 1 and y == 2:
         print('You can travel: (N)orth or (E)ast or (S)outh.')
+        n_valid,e_valid,s_valid,w_valid = True,True,True,False
     elif x == 3 and y == 2:
         print('You can travel: (N)orth or (S)outh.')
+        n_valid,s_valid,e_valid,w_valid = True,True,False,False
     elif (x == 2 and y == 2) or (x == 3 and y == 3):
         print('You can travel: (S)outh or (W)est.')
+        n_valid,s_valid,e_valid,w_valid = False,True,False,True
     elif x == 1 and y == 3:
         print('You can travel: (E)ast or (S)outh.')
+        n_valid,s_valid,e_valid,w_valid = False,True,True,False
     elif x == 2 and y == 3:
         print('You can travel: (E)ast or (W)est.')
+        n_valid,s_valid,e_valid,w_valid = False, False, True, True
     elif x == 3 and y == 1:
         print("Victory")
+        n_valid,s_valid,e_valid,w_valid = False,False,False,False
     else:
         print('Not a valid direction!')
-
+    return n_valid,s_valid,e_valid,w_valid
 
 
 
 loop = True
 
 while loop == True:
-    check_location(grid_x,grid_y)
+    n_valid, s_valid, e_valid, w_valid = check_location(grid_x,grid_y)
     if grid_x == 3 and grid_y == 1:
         loop = False
     else:
         direction = input("Direction: ")
-        grid_x,grid_y = move_player(direction,grid_x,grid_y)
+        grid_x,grid_y = move_player(direction,grid_x,grid_y,n_valid,s_valid,e_valid,w_valid)
         grid_generator(grid_x,grid_y)
 
 
